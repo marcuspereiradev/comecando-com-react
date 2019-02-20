@@ -1,33 +1,31 @@
 const React = require('react');
+const SearchUser = require('./SearchUser');
+const UserInfo = require('./UserInfo');
 
 const GitHub = React.createClass({
-  handleSubmit: function(e) {
-    e.preventDefault();
-    console.log(this.refs.username.value);
+  getInitialState: function() {
+    return {
+      user: null,
+      repos: [],
+    };
   },
-  render: function () {
+  updateUser: function(user) {
+    this.setState({user: user});
+  },
+  updateRepos: function(repos) {
+    this.setState({repos: repos});
+  },
+  render: function() {
     return (
       <div className="container">
-        <div className="jumbotron">
-          <h1>GitHub Info</h1>
-          <div className="row">
-            <form onSubmit={this.handleSubmit}>
-              <div className="form-group">
-                <label>Username</label>
-                <input
-                  ref="username"
-                  type="text"
-                  className="form-control"
-                  placeholder="Ex: Marcus"
-                />
-              </div>
-              <button
-                type="submit"
-                className="btn btn-primary">Buscar
-              </button>
-            </form>
-          </div>
-        </div>
+        <SearchUser
+          updateUser={this.updateUser}
+          updateRepos={this.updateRepos}
+        />
+        <UserInfo
+          user={this.state.user}
+          repos={this.state.repos} 
+        />
       </div>
     );
   }
