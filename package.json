@@ -20,6 +20,7 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.5",
     "babel-preset-react": "^6.24.1",
+    "gitignore": "^0.6.0",
     "webpack": "^4.29.5",
     "webpack-cli": "^3.2.3"
   }
